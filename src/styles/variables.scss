@@ -1,0 +1,10 @@
+$primary-color: #191414;
+$secondary-color: #1DB954;
+$text-color: #fff;
+$secondary-text-color: #BDBDBD;
+
+@mixin hoverToColor {
+    &:hover{
+        color: $text-color;
+    }
+}

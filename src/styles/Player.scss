@@ -1,0 +1,10 @@
+.player-container{
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .player_body {
+    min-height: 100vh;
+    display: flex;
+    flex-grow: 1;
+}

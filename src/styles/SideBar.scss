@@ -1,0 +1,68 @@
+@import 'variables';
+
+.side-bar{
+    width: 25%;
+    padding: 30px 25px;
+    background-color: #040404;
+    text-overflow: ellipsis;
+}
+
+.option{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 15px 3px;
+    color: $secondary-text-color;
+    text-decoration: none;
+    @include hoverToColor;
+
+    &-title{
+        display: flex;
+        margin: auto 10px ;
+        color: $secondary-text-color;
+        cursor: pointer;
+        @include hoverToColor;
+    }
+
+    &:target{
+        background-color: red
+    }
+}
+
+.spotify-logo{
+    @extend .option;
+    margin: 0 0 20px 0;
+    color: $text-color;
+}
+
+.spotify-title{
+    @extend .option-title;
+    font-size: 1.5em;
+    cursor: initial;
+    color: $text-color;
+}
+
+.playlist-title{
+    margin: 3px 0;
+    font-weight: 500;
+}
+
+.side-bar-options > hr {
+    border: 1px solid #282828;
+    width: 90%;
+    margin: 10px auto;
+}
+
+.playlists{
+    margin: 10px 0 0 10px;
+    height: 300px;
+    color: $secondary-text-color;
+    cursor: pointer;
+    overflow-y: auto;
+
+    &-option{
+        margin: 2.5px 0;
+        font-size: .9em;
+        @include hoverToColor;
+    }
+}

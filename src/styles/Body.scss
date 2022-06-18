@@ -1,0 +1,46 @@
+@import 'variables';
+
+.main-body{
+    width: 100%;
+    min-height: 100vh;
+    background-color: #151515;
+}
+
+.body-option{
+    width: 100%;
+    padding: 60px 32px 0;
+
+    & > div {
+        display: flex;
+        flex-direction: row;
+    }
+}
+
+.track{
+    margin: 20px 10px;
+    padding: 16px;
+    border-radius: 8px;
+    background-color: lighten($color: #151515, $amount: 3);
+
+    & > img{
+        width: 180px;
+        box-shadow: 1px 2px 15px 3px rgba(0,0,0,0.85);
+                
+    }
+
+    &-data{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        width: 175px;
+        padding: 15px 0;
+
+        & > p{
+            margin: 8px 0;
+            font-size: .9em;
+            color: $secondary-text-color;
+        }
+    }
+
+   
+}

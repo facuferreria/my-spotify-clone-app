@@ -1,0 +1,58 @@
+.login {
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  margin-top: 100px;
+}
+
+.logo-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 0 25px 100px;
+}
+
+.logo-title {
+  font-size: 3.5em;
+  margin: auto 15px;
+}
+
+.login-btn {
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  width: 50%;
+  color: #fff;
+  text-decoration: none;
+  margin: 20px auto;
+  padding: 10px;
+  background-color: #1DB954;
+  border-radius: 22px;
+  font-weight: 700;
+}
+
+.App {
+  background-color: #191414;
+  color: #fff;
+  width: 100%;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.player-container {
+  width: 100%;
+  display: block;
+}
+/*# sourceMappingURL=App.css.map */

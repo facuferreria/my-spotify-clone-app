@@ -1,0 +1,54 @@
+.main-body {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #151515;
+}
+
+.body-option {
+  width: 100%;
+  padding: 60px 32px 0;
+}
+
+.body-option > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.track {
+  margin: 20px 10px;
+  padding: 16px;
+  border-radius: 8px;
+  background-color: #1d1d1d;
+}
+
+.track > img {
+  width: 180px;
+  -webkit-box-shadow: 1px 2px 15px 3px rgba(0, 0, 0, 0.85);
+          box-shadow: 1px 2px 15px 3px rgba(0, 0, 0, 0.85);
+}
+
+.track-data {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 15px 0;
+}
+
+.track-data > p {
+  margin: 8px 0;
+  font-size: .9em;
+  color: #BDBDBD;
+}
+/*# sourceMappingURL=Body.css.map */

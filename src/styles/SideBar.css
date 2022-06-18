@@ -1,0 +1,83 @@
+.side-bar {
+  width: 25%;
+  padding: 30px 25px;
+  background-color: #040404;
+  text-overflow: ellipsis;
+}
+
+.option, .spotify-logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 15px 3px;
+  color: #BDBDBD;
+  text-decoration: none;
+}
+
+.option:hover, .spotify-logo:hover {
+  color: #fff;
+}
+
+.option-title, .spotify-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: auto 10px;
+  color: #BDBDBD;
+  cursor: pointer;
+}
+
+.option-title:hover, .spotify-title:hover {
+  color: #fff;
+}
+
+.option:target, .spotify-logo:target {
+  background-color: red;
+}
+
+.spotify-logo {
+  margin: 0 0 20px 0;
+  color: #fff;
+}
+
+.spotify-title {
+  font-size: 1.5em;
+  cursor: initial;
+  color: #fff;
+}
+
+.playlist-title {
+  margin: 3px 0;
+  font-weight: 500;
+}
+
+.side-bar-options > hr {
+  border: 1px solid #282828;
+  width: 90%;
+  margin: 10px auto;
+}
+
+.playlists {
+  margin: 10px 0 0 10px;
+  height: 300px;
+  color: #BDBDBD;
+  cursor: pointer;
+  overflow-y: auto;
+}
+
+.playlists-option {
+  margin: 2.5px 0;
+  font-size: .9em;
+}
+
+.playlists-option:hover {
+  color: #fff;
+}
+/*# sourceMappingURL=SideBar.css.map */
