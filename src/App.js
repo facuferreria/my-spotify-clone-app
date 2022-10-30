@@ -37,47 +37,50 @@ function App() {
     if(token){
       spotify.setAccessToken(token);
       //A PARTIR DE AQUI OBTENGO LA DATA QUE NECESITO
-      
-      dispatch({
-        type: "GET_DATA",
-        gettingData: false,
-      })
+      const getSpotifyData = async () => {
 
-      // aqui obtengo la data de mi usuario
-      spotify.getMe().then((data) =>{
+        const myData = await spotify.getMe()
         dispatch({
           type: "GET_USER",
-          user: data,
-        })
-      });
-      
-      spotify.getUserPlaylists().then((data) => {
+          user: myData,
+        });
+          
+        const myPlaylist = await spotify.getUserPlaylists()
         dispatch({
-            type: "GET_PLAYLISTS",
-            playlists: data,
-        })
-      });
-      
-      spotify.getMyTopTracks({limit: 4}).then((data) => {
+          type: "GET_PLAYLISTS",
+          playlists: myPlaylist,
+        });
+          
+        const getMyTopTracks = await spotify.getMyTopTracks({limit: 4})
         dispatch({
           type: "GET_TOP_TRACKS",
-          top_tracks: data,
-        })
-      });
+          top_tracks: getMyTopTracks,
+        });
+         
 
-      spotify.getMyRecentlyPlayedTracks({limit: 4}).then((data) => {
+        const getMyRecentlyPlayedTracks = await spotify.getMyRecentlyPlayedTracks({limit: 4})
         dispatch({
-            type: "RECENTLY_PLAYED",
-            recently_played: data,
-        })
-      });
+          type: "RECENTLY_PLAYED",
+          recently_played: getMyRecentlyPlayedTracks,
+        });
+ 
 
-      spotify.getMyTopArtists({limit: 4}).then((data) => {
+        const getMyTopArtists = await spotify.getMyTopArtists({limit: 4})
         dispatch({
           type: "GET_TOP_ARTISTS",
-          top_artists: data,
+          top_artists: getMyTopArtists,
+        });
+          
+        
+        // aqui obtengo la data de mi usuario
+        await dispatch({
+          type: "GET_DATA",
+          gettingData: true,
         })
-      });
+      }
+
+      getSpotifyData();
+      
     }
   }, [token]);
   
@@ -85,7 +88,7 @@ function App() {
   return (
     
       <div className="App">
-        {token ? <Player spotify= {spotify} /> : <Login />}
+        {token ? <Player spotify= {spotify} getData={ gettingData } /> : <Login />}
       </div>
   );
 }
