@@ -1,13 +1,13 @@
 import React, {useState, useEffect} from 'react';
-import Login from './components/Login';
-import Player from './components/Player';
+import Login from './components/Login/Login.js';
+import Layout from './components/Layout/Layout';
 import { getTokenFromResponse } from './spotify';
-import './styles/App.scss';
+import './App.scss';
 import SpotifyWebApi from "spotify-web-api-js";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
-import { useDataLayer } from './components/Hooks/useDataLayer';
+import { useDataLayer } from './provider/useDataLayer';
 
 library.add(fas, fab);
 
@@ -18,8 +18,8 @@ let spotify = new SpotifyWebApi();
 function App() {
 
   const [token, setToken] = useState(null);
-  const [{ user, recently_played, top_artists, top_tracks, playlists, gettingData }, dispatch] = useDataLayer();
-  const accessToken = getTokenFromResponse();
+  const [{ user }, dispatch] = useDataLayer();
+  
   //donde obtengo la data necesaria de la api
 
   // esto solo sucede una vez
@@ -32,7 +32,6 @@ function App() {
 
   //sucede cada vez que el token de acceso cambie
   useEffect(() => {
-   
 
     if(token){
       spotify.setAccessToken(token);
@@ -82,13 +81,13 @@ function App() {
       getSpotifyData();
       
     }
-  }, [token]);
+  }, [token, dispatch]);
   
   //si token es valido ingresa al programa y sino vuelve al componente login
   return (
     
       <div className="App">
-        {token ? <Player spotify= {spotify} getData={ gettingData } /> : <Login />}
+        {token ? <Layout /> : <Login />}
       </div>
   );
 }

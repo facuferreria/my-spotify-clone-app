@@ -10,10 +10,17 @@ export const initialState = {
     recently_played: null,
     item: null,
     gettingData: false,
+    spotify: null,
 }
 
-const reducer = (action, state) => {
+const reducer = (state, action) => {
     switch (action.type) {
+
+        case "SET_SPOTIFY":
+            return {
+                ...state,
+                spotify: action.spotify,
+            };
 
         case "GET_DATA":
             return {

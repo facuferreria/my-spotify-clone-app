@@ -1,7 +1,7 @@
 import React from "react";
-import "../styles/Login.scss";
+import "./Login.scss";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import accessUrl from "../spotify.js";
+import accessUrl from "../../spotify.js";
 
 
 function Login() {

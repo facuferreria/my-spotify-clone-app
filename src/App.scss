@@ -1,4 +1,4 @@
-@import 'Login', 'variables';
+@import './components/Login/Login.scss', 'variables';
 
 .App{
   background-color: $primary-color;
