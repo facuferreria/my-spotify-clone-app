@@ -10,7 +10,7 @@ export const initialState = {
     recently_played: null,
     item: null,
     gettingData: false,
-    spotify: null,
+    spotifyData: null,
 }
 
 const reducer = (state, action) => {
@@ -19,52 +19,52 @@ const reducer = (state, action) => {
         case "SET_SPOTIFY":
             return {
                 ...state,
-                spotify: action.spotify,
+                spotifyData: action.spotify,
             };
 
-        case "GET_DATA":
+        case "SET_DATA":
             return {
                 ...state,
                 gettingData: action.gettingData,
             };
         
-        case "GET_PLAYLISTS":
+        case "SET_PLAYLISTS":
             return {
                 ...state,
                 playlists: action.playlists,
             };
 
-        case "GET_PLAYLISTS_TRACKS":
+        case "SET_PLAYLISTS_TRACKS":
             return {
                 ...state,
                 playlists_tracks: action.playlists_tracks,
             };
-        case "GET_USER":
+        case "SET_USER":
             return{
                 ...state,
                 user: action.user,
             };
-        case "GET_TOP_ARTISTS":
+        case "SET_TOP_ARTISTS":
             return{
                  ...state,
                 top_artists: action.top_artists,
             };
-        case "GET_TOP_ALBUMS":
+        case "SET_TOP_ALBUMS":
             return{
                 ...state,
                 top_albums: action.top_albums,
             };
-        case "GET_TOP_TRACKS":
+        case "SET_TOP_TRACKS":
             return{
                 ...state,
                 top_tracks: action.top_tracks,
             };
-        case "GET_RECOMMENDED":
+        case "SET_RECOMMENDED":
             return{
                 ...state,
                 spotify_recommendations: action.get_recomended,
             }
-        case "RECENTLY_PLAYED":
+        case "SET_RECENTLY_PLAYED":
             return {
                 ...state,
                 recently_played: action.recently_played,

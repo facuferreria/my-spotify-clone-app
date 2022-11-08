@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import Login from './components/Login/Login.js';
-import Layout from './components/Layout/Layout';
+import Layout from './components/Layout/Layout.js';
 import { getTokenFromResponse } from './spotify';
 import './App.scss';
 import SpotifyWebApi from "spotify-web-api-js";
@@ -18,7 +18,7 @@ let spotify = new SpotifyWebApi();
 function App() {
 
   const [token, setToken] = useState(null);
-  const [{ user }, dispatch] = useDataLayer();
+  const [{ spotifyData, user, top_artists }, dispatch] = useDataLayer();
   
   //donde obtengo la data necesaria de la api
 
@@ -37,57 +37,60 @@ function App() {
       spotify.setAccessToken(token);
       //A PARTIR DE AQUI OBTENGO LA DATA QUE NECESITO
       const getSpotifyData = async () => {
-
+        
+        // aqui obtengo la data de mi usuario
         const myData = await spotify.getMe()
         dispatch({
-          type: "GET_USER",
+          type: "SET_USER",
           user: myData,
         });
           
         const myPlaylist = await spotify.getUserPlaylists()
         dispatch({
-          type: "GET_PLAYLISTS",
+          type: "SET_PLAYLISTS",
           playlists: myPlaylist,
         });
           
         const getMyTopTracks = await spotify.getMyTopTracks({limit: 4})
         dispatch({
-          type: "GET_TOP_TRACKS",
+          type: "SET_TOP_TRACKS",
           top_tracks: getMyTopTracks,
         });
          
 
         const getMyRecentlyPlayedTracks = await spotify.getMyRecentlyPlayedTracks({limit: 4})
         dispatch({
-          type: "RECENTLY_PLAYED",
+          type: "SET_RECENTLY_PLAYED",
           recently_played: getMyRecentlyPlayedTracks,
         });
  
 
         const getMyTopArtists = await spotify.getMyTopArtists({limit: 4})
         dispatch({
-          type: "GET_TOP_ARTISTS",
+          type: "SET_TOP_ARTISTS",
           top_artists: getMyTopArtists,
         });
-          
-        
-        // aqui obtengo la data de mi usuario
+
         await dispatch({
-          type: "GET_DATA",
+          type: "SET_SPOTIFY",
+          spotifyData: spotify,
+        })
+          
+        await dispatch({
+          type: "SET_DATA",
           gettingData: true,
         })
       }
 
-      getSpotifyData();
-      
+      getSpotifyData();  
     }
   }, [token, dispatch]);
-  
+
   //si token es valido ingresa al programa y sino vuelve al componente login
   return (
     
       <div className="App">
-        {token ? <Layout /> : <Login />}
+        {token ? <Layout  spotify = { spotify }/> : <Login />}
       </div>
   );
 }

@@ -3,8 +3,10 @@ import "./Layout.scss";
 import SideBar from "../SideBar/SideBar.js";
 import Body from "../Body/Body.js";
 import { useDataLayer } from '../../provider/useDataLayer.js';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Playlist from '../Playlist/Playlist';
 
-function Layout() {
+function Layout({ spotify }) {
 
   const [{ gettingData }] = useDataLayer();
   
@@ -16,10 +18,15 @@ function Layout() {
     gettingData
 
     ?
-    <div className= "player_body">
-      <SideBar />
-      <Body />   
-    </div>
+    <BrowserRouter>
+      <div className= "player_body">
+        <SideBar spotify = { spotify }/>
+          <Routes>
+          <Route index path="/" element = {<Body />} />
+          <Route index path="/playlist/:playlistId" element = {<Playlist />} />
+        </Routes>   
+      </div>
+    </BrowserRouter>
     :  
     <h3>Cargando...</h3>
   }

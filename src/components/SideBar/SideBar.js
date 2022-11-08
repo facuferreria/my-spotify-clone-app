@@ -2,13 +2,18 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useDataLayer } from '../../provider/useDataLayer';
 import './SideBar.scss';
+import { Link } from 'react-router-dom'
 
 
 
-
-function SideBar(){
+function SideBar({ spotify }){
 
     const [{ playlists }] = useDataLayer();
+
+    const getPlaylist = async (id) => {
+        const myPlaylistTracks = await spotify.getPlaylist(id)
+        console.log(myPlaylistTracks);
+    }
     
     return (
         <div className= "side-bar">
@@ -17,10 +22,10 @@ function SideBar(){
                     <FontAwesomeIcon icon={['fab', 'spotify']} size= "3x"/>
                     <h1 className= "spotify-title">Spotify</h1>
                 </div>
-                <a className= "option" href= "#">
+                <Link className= "option-title" to= "/">
                     <FontAwesomeIcon icon={['fas', 'home']} />
-                    <p className= "option-title" >Inicio</p>
-                </a>
+                    <p>Inicio</p>
+                </Link>
                 <a className= "option" href= "#">
                     <FontAwesomeIcon icon={['fas', 'search']} />
                     <p className= "option-title">Buscar</p>
@@ -36,11 +41,9 @@ function SideBar(){
                 {
                     playlists?.items?.map(
                         (list, index) => 
-                        <p className="playlists-option" 
-                            key={index}
-                        >
-                            {list.name}
-                        </p>
+                        <Link className="playlists-option" key= {index} to= {`/playlist/${list.id}`}>
+                            <p onClick= {() => getPlaylist(list.id)} >{list.name}</p>
+                        </Link>
                     ) 
                 }
             </div>
