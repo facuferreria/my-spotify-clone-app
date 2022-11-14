@@ -9,11 +9,6 @@ import { Link } from 'react-router-dom'
 function SideBar({ spotify }){
 
     const [{ playlists }] = useDataLayer();
-
-    const getPlaylist = async (id) => {
-        const myPlaylistTracks = await spotify.getPlaylist(id)
-        console.log(myPlaylistTracks);
-    }
     
     return (
         <div className= "side-bar">
@@ -42,7 +37,7 @@ function SideBar({ spotify }){
                     playlists?.items?.map(
                         (list, index) => 
                         <Link className="playlists-option" key= {index} to= {`/playlist/${list.id}`}>
-                            <p onClick= {() => getPlaylist(list.id)} >{list.name}</p>
+                            <p>{list.name}</p>
                         </Link>
                     ) 
                 }

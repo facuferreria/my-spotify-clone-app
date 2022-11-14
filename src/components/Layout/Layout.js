@@ -4,7 +4,7 @@ import SideBar from "../SideBar/SideBar.js";
 import Body from "../Body/Body.js";
 import { useDataLayer } from '../../provider/useDataLayer.js';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Playlist from '../Playlist/Playlist';
+import PlaylistSection from '../PlaylistSection/PlaylistSection';
 
 function Layout({ spotify }) {
 
@@ -23,7 +23,7 @@ function Layout({ spotify }) {
         <SideBar spotify = { spotify }/>
           <Routes>
           <Route index path="/" element = {<Body />} />
-          <Route index path="/playlist/:playlistId" element = {<Playlist />} />
+          <Route index path="/playlist/:playlistId" element = {<PlaylistSection spotify = { spotify }/>} />
         </Routes>   
       </div>
     </BrowserRouter>
