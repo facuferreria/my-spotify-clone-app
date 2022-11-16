@@ -1,5 +1,5 @@
 import React from 'react'
-import PlaylistTrack from '../PlaylistTrack/PlaylistTrack';
+import TrackComponent from '../TrackComponent/TrackComponent';
 
 function PlaylistBody({ playlistData, playlistTrackData  }) {
 
@@ -36,7 +36,7 @@ function PlaylistBody({ playlistData, playlistTrackData  }) {
                 <p>{ calculatePlaylistTime() }</p>
             </div>
         </div>
-        <div>{ playlistTrackData.map( (item, id) => <PlaylistTrack position={id} key= {item.track.id} track = {item.track} /> ) }</div>
+        <div>{ playlistTrackData.map( (item, id) => <TrackComponent position={id} key= {item.track.id} track = {item.track} /> ) }</div>
     </div>
   )
 }

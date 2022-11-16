@@ -3,15 +3,15 @@ import { useParams } from 'react-router-dom';
 import { useDataLayer } from '../../provider/useDataLayer';
 import PlaylistBody from '../PlaylistBody/PlaylistBody';
 
-function PlaylistSection({ spotify }) {
+function PlaylistSection() {
 
-  const {playlistId} = useParams();
-  const [{ playlists_tracks }, dispatch] = useDataLayer();
-  const [loading, setLoading] = useState(true);
-  const [playlistData, setPlaylistData] = useState({});
+  const { playlistId } = useParams();
+  const [{ playlists_tracks, spotifyData }, dispatch] = useDataLayer();
+  const [ loading, setLoading ] = useState(true);
+  const [ playlistData, setPlaylistData ] = useState({});
 
   const getPlaylist = async (id) => {
-    const myPlaylistTracks = await spotify.getPlaylist(id);
+    const myPlaylistTracks = await spotifyData.getPlaylist(id);
     setPlaylistData(myPlaylistTracks);
     
     dispatch({

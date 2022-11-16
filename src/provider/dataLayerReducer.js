@@ -19,7 +19,7 @@ const reducer = (state, action) => {
         case "SET_SPOTIFY":
             return {
                 ...state,
-                spotifyData: action.spotify,
+                spotifyData: action.spotifyData,
             };
 
         case "SET_DATA":
@@ -69,6 +69,19 @@ const reducer = (state, action) => {
                 ...state,
                 recently_played: action.recently_played,
             }
+
+        case "SET_PLAYING":
+            return {
+                ...state,
+                playing: action.playing,
+            }
+        
+        case "SET_ITEM":
+            return {
+                ...state,
+                item: action.item,
+            }
+
         default:
             return state;
     }

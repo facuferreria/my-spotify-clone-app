@@ -9,7 +9,7 @@ import PlaylistSection from '../PlaylistSection/PlaylistSection';
 function Layout({ spotify }) {
 
   const [{ gettingData }] = useDataLayer();
-  
+  console.log(spotify.getMyDevices())
   return (
   
   <div className= "player-container">
@@ -23,7 +23,7 @@ function Layout({ spotify }) {
         <SideBar spotify = { spotify }/>
           <Routes>
           <Route index path="/" element = {<Body />} />
-          <Route index path="/playlist/:playlistId" element = {<PlaylistSection spotify = { spotify }/>} />
+          <Route index path="/playlist/:playlistId" element = {<PlaylistSection />} />
         </Routes>   
       </div>
     </BrowserRouter>
