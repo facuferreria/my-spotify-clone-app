@@ -5,11 +5,11 @@ import Body from "../Body/Body.js";
 import { useDataLayer } from '../../provider/useDataLayer.js';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import PlaylistSection from '../PlaylistSection/PlaylistSection';
+import Player from '../Player/Player';
 
-function Layout({ spotify }) {
+function Layout({ token }) {
 
   const [{ gettingData }] = useDataLayer();
-  console.log(spotify.getMyDevices())
   return (
   
   <div className= "player-container">
@@ -20,11 +20,12 @@ function Layout({ spotify }) {
     ?
     <BrowserRouter>
       <div className= "player_body">
-        <SideBar spotify = { spotify }/>
-          <Routes>
+        <SideBar />
+        <Routes>
           <Route index path="/" element = {<Body />} />
           <Route index path="/playlist/:playlistId" element = {<PlaylistSection />} />
-        </Routes>   
+        </Routes>
+        <Player token = { token } />
       </div>
     </BrowserRouter>
     :  

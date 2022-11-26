@@ -91,7 +91,7 @@ function App() {
   return (
     
       <div className="App">
-        {token ? <Layout  spotify = { spotify }/> : <Login />}
+        {token ? <Layout  token = { token } /> : <Login />}
       </div>
   );
 }

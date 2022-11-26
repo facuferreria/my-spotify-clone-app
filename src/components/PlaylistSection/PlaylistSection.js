@@ -23,7 +23,6 @@ function PlaylistSection() {
   }
   
   useEffect(() => getPlaylist(playlistId), [playlistId])
-  console.log(playlistData);
 
   return (
     <div>

@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 
 
 
-function SideBar({ spotify }){
+function SideBar(){
 
     const [{ playlists }] = useDataLayer();
     
@@ -15,20 +15,20 @@ function SideBar({ spotify }){
             <div className= "side-bar-options">
                 <div className= "spotify-logo">
                     <FontAwesomeIcon icon={['fab', 'spotify']} size= "3x"/>
-                    <h1 className= "spotify-title">Spotify</h1>
+                    <h1 className= "spotify-title">Ferretify</h1>
                 </div>
                 <Link className= "option-title" to= "/">
                     <FontAwesomeIcon icon={['fas', 'home']} />
                     <p>Inicio</p>
                 </Link>
-                <a className= "option" href= "#">
+                <Link className= "option-title" to= "/">
                     <FontAwesomeIcon icon={['fas', 'search']} />
                     <p className= "option-title">Buscar</p>
-                </a>
-                <a className= "option" href= "#">
+                </Link>
+                <Link className= "option-title" to= "/">
                     <FontAwesomeIcon icon={['fas', 'headphones']} />
                     <p className= "option-title" >Tu Biblioteca</p>
-                </a>
+                </Link>
             </div>
             <p className= "playlist-title">PLAYLISTS</p>
             

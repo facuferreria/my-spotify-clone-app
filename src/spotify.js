@@ -12,7 +12,13 @@ const scopes = [
     "playlist-modify-public",
     "playlist-modify-private",
     "playlist-read-private",
-    "playlist-read-collaborative"
+    "playlist-read-collaborative",
+    "user-read-playback-position",
+    "user-read-private",
+    "streaming",
+    "user-read-email",
+    "user-library-read",
+    "user-library-modify"
   ];
 
   //obtain acces token from url
