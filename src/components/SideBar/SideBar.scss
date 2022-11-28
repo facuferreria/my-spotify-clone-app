@@ -18,8 +18,11 @@
 
     &-title{
         display: flex;
-        margin: auto 10px ;
+        align-items: center;
+        margin: 15px 0;
         color: $secondary-text-color;
+        text-decoration: none;
+        font-weight: 700;
         cursor: pointer;
         @include hoverToColor;
     }
@@ -27,6 +30,10 @@
     &:target{
         background-color: red
     }
+}
+
+.title{
+    margin-left: 10px;
 }
 
 .spotify-logo{
@@ -40,11 +47,7 @@
     font-size: 1.5em;
     cursor: initial;
     color: $text-color;
-}
-
-.playlist-title{
-    margin: 3px 0;
-    font-weight: 500;
+    margin-left: 5px;
 }
 
 .side-bar-options > hr {
@@ -54,15 +57,28 @@
 }
 
 .playlists{
-    margin: 10px 0 0 10px;
+    margin: 5px 0;
     height: 300px;
     color: $secondary-text-color;
     cursor: pointer;
     overflow-y: auto;
 
+    &::before{
+        content: "";
+        display: block;
+        background-color: $secondary-text-color;
+        width: 95%;
+        height: 2px;
+    }
+
     &-option{
-        margin: 2.5px 0;
-        font-size: .9em;
+        color: $secondary-text-color;
+        text-decoration: none;
         @include hoverToColor;
+    }
+
+    &-name{
+        padding: 5px 0;
+        font-size: .9em;
     }
 }

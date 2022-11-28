@@ -25,8 +25,8 @@ function Layout({ token }) {
           <Route index path="/" element = {<Body />} />
           <Route index path="/playlist/:playlistId" element = {<PlaylistSection />} />
         </Routes>
-        <Player token = { token } />
       </div>
+      <Player token = { token } />
     </BrowserRouter>
     :  
     <h3>Cargando...</h3>

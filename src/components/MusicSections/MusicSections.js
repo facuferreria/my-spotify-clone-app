@@ -18,7 +18,9 @@ function MusicSections({recently_played, top_tracks, top_artists}) {
                                     <h3>{item.track.name}</h3>
                                     <p>{item.track.artists.map(artist => artist.name).join(", ")}</p>
                                 </div>
-                                
+                                <div className= "play-button">
+                                    <FontAwesomeIcon icon="fa-solid fa-play" />
+                                </div>
                             </div>
                         )
                     })
@@ -40,7 +42,7 @@ function MusicSections({recently_played, top_tracks, top_artists}) {
                                     <h3>{topArtist.name}</h3>
                                     <p>{topArtist.artists.map(artist => artist.name).join(", ")}</p>
                                 </div>
-                                
+                                <FontAwesomeIcon icon="fa-solid fa-play" />
                             </div>
                         )
                     })
@@ -61,7 +63,7 @@ function MusicSections({recently_played, top_tracks, top_artists}) {
                                     <h3>{topTrack.name}</h3>
                                     <p>{topTrack.genres.join(", ")}</p>
                                 </div>
-                                
+                                <FontAwesomeIcon icon="fa-solid fa-play" />
                             </div>
                         )
                     })   

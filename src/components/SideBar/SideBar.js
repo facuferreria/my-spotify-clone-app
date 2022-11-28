@@ -19,25 +19,23 @@ function SideBar(){
                 </div>
                 <Link className= "option-title" to= "/">
                     <FontAwesomeIcon icon={['fas', 'home']} />
-                    <p>Inicio</p>
+                    <p className= "title">Inicio</p>
                 </Link>
                 <Link className= "option-title" to= "/">
                     <FontAwesomeIcon icon={['fas', 'search']} />
-                    <p className= "option-title">Buscar</p>
+                    <p className= "title">Buscar</p>
                 </Link>
                 <Link className= "option-title" to= "/">
                     <FontAwesomeIcon icon={['fas', 'headphones']} />
-                    <p className= "option-title" >Tu Biblioteca</p>
+                    <p className= "title" >Tu Biblioteca</p>
                 </Link>
-            </div>
-            <p className= "playlist-title">PLAYLISTS</p>
-            
+            </div>            
             <div className= "playlists">
                 {
                     playlists?.items?.map(
                         (list, index) => 
                         <Link className="playlists-option" key= {index} to= {`/playlist/${list.id}`}>
-                            <p>{list.name}</p>
+                            <p className="playlists-name">{list.name}</p>
                         </Link>
                     ) 
                 }

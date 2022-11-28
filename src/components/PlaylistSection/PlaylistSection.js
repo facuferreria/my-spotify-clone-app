@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import { useDataLayer } from '../../provider/useDataLayer';
 import PlaylistBody from '../PlaylistBody/PlaylistBody';
+import './PlaylistSection.scss'
 
 function PlaylistSection() {
 
@@ -25,7 +26,7 @@ function PlaylistSection() {
   useEffect(() => getPlaylist(playlistId), [playlistId])
 
   return (
-    <div>
+    <div className = "playlist-container">
       {
         loading 
         ? <h3>Cargando...</h3> 
