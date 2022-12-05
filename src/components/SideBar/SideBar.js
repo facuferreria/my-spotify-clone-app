@@ -31,14 +31,16 @@ function SideBar(){
                 </Link>
             </div>            
             <div className= "playlists">
-                {
-                    playlists?.items?.map(
-                        (list, index) => 
-                        <Link className="playlists-option" key= {index} to= {`/playlist/${list.id}`}>
-                            <p className="playlists-name">{list.name}</p>
-                        </Link>
-                    ) 
-                }
+                <div className= "playlists-options-container">
+                    {
+                        playlists?.items?.map(
+                            (list, index) => 
+                            <Link className="playlists-option" key= {index} to= {`/playlist/${list.id}`}>
+                                <p className="playlists-name">{list.name}</p>
+                            </Link>
+                        ) 
+                    }
+                </div>
             </div>
         </div>
     )

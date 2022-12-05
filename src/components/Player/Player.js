@@ -12,7 +12,7 @@ function Player({ token }) {
     useEffect(() => setPlay(true), [playingTracks])
 
     return (
-      <div className = "player-container">
+      <div className = "footer-container">
           <SpotifyWebPlayer
               token = {token}
               uris = {playingTracks}

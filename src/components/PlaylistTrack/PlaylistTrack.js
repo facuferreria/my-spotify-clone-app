@@ -1,7 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { useDataLayer } from '../../provider/useDataLayer';
-import './PlaylistTrack.scss'
+import './PlaylistTrack.scss';
+import { Link } from 'react-router-dom';
 
 function PlaylistTrack({ track, position, playPlaylist, calculateTime }) {
   const [trackInLibrary, setTrackInLibrary] = useState(false);
@@ -14,16 +15,22 @@ function PlaylistTrack({ track, position, playPlaylist, calculateTime }) {
       track_position: position,
     });
 
+    await dispatch({
+      type: "SET_ITEM",
+      item: track,
+    });
     await playPlaylist();
   } 
 
   return (
     <div  className = "track-container" onClick = {() => setTrackState()} >     
       <p className = "track-position">{ position + 1 }</p>
-      <div className = "track-data">
+      <div className = "track-information">
         <img className = "track-img" src = { track?.album.images[2].url} />
         <div>
-          <h3>{ track?.name }</h3>
+        <Link className= "option-title" to= "/lyrics">
+          <h4>{ track?.name }</h4>
+        </Link>
           <p>{ track?.artists.map(artist => artist.name).join(", ") }</p>
         </div>
       </div>

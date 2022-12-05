@@ -1,8 +1,10 @@
 @import '../../variables.scss';
 
 .side-bar{
+    position: relative;
     width: 25%;
     padding: 30px 25px;
+    height: 100vh;
     background-color: #040404;
     text-overflow: ellipsis;
 }
@@ -57,11 +59,7 @@
 }
 
 .playlists{
-    margin: 5px 0;
-    height: 300px;
     color: $secondary-text-color;
-    cursor: pointer;
-    overflow-y: auto;
 
     &::before{
         content: "";
@@ -69,6 +67,13 @@
         background-color: $secondary-text-color;
         width: 95%;
         height: 2px;
+    }
+
+    &-options-container{
+        margin: 5px 0;
+        height: 200px;
+        cursor: pointer;
+        overflow-y: auto;
     }
 
     &-option{
