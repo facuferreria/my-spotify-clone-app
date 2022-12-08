@@ -6,7 +6,7 @@ import { useDataLayer } from '../../provider/useDataLayer.js';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import PlaylistSection from '../PlaylistSection/PlaylistSection';
 import Player from '../Player/Player';
-import Lyrics from '../Lyrics/Lyrics';
+import SearchContainer from '../SearchContainer/SearchContainer';
 
 function Layout({ token }) {
 
@@ -24,7 +24,7 @@ function Layout({ token }) {
         <SideBar />
         <Routes>
           <Route index path="/" element = {<Body />} />
-          <Route index path="/lyrics" element = {<Lyrics />} />
+          <Route index path="/search" element = {<SearchContainer />} />
           <Route index path="/playlist/:playlistId" element = {<PlaylistSection />} />
         </Routes>
       </div>

@@ -2,35 +2,39 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 import { useDataLayer } from '../../provider/useDataLayer';
 import './PlaylistTrack.scss';
-import { Link } from 'react-router-dom';
 
 function PlaylistTrack({ track, position, playPlaylist, calculateTime }) {
   const [trackInLibrary, setTrackInLibrary] = useState(false);
-  const [{}, dispatch] = useDataLayer();
+  const [ {item} , dispatch] = useDataLayer();
   let millisec = track?.duration_ms;
 
-  const setTrackState = async () => {
-    await dispatch({
-      type: "SET_TRACK_POSITION",
-      track_position: position,
-    });
+  const playTrack = async (isFromList) => {
 
-    await dispatch({
-      type: "SET_ITEM",
-      item: track,
-    });
-    await playPlaylist();
+    if (isFromList === true) {
+      await dispatch({
+        type: "SET_TRACK_POSITION",
+        track_position: position,
+      });
+      
+      await playPlaylist();
+    } 
+    
+    else {
+      await dispatch({
+        type: "SET_ITEM",
+        item: track,
+      });
+    }  
+    
   } 
 
   return (
-    <div  className = "track-container" onClick = {() => setTrackState()} >     
+    <div  className = "track-container" onClick = {() => playTrack(true)} >     
       <p className = "track-position">{ position + 1 }</p>
       <div className = "track-information">
-        <img className = "track-img" src = { track?.album.images[2].url} />
+        <img className = "track-img" src = { track?.album.images[2].url} alt = "track"/>
         <div>
-        <Link className= "option-title" to= "/lyrics">
           <h4>{ track?.name }</h4>
-        </Link>
           <p>{ track?.artists.map(artist => artist.name).join(", ") }</p>
         </div>
       </div>

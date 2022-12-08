@@ -12,9 +12,9 @@ function Body() {
    
     return (
         <div className= "main-body">
-            <MusicSections data = {recently_played} category = {"recently_played"} />
-            <MusicSections data = {top_tracks} category = {"top_tracks"} />    
-            <MusicSections data = {top_artists} category = {"top_artists"} />          
+            <MusicSections data = {recently_played} category = "recently_played" title = "Escuchados recientemente"/>
+            <MusicSections data = {top_tracks} category = "track" title = "Tus top canciones" />    
+            <MusicSections data = {top_artists} category = "artist" title = "Tus top artistas"/>          
         </div>
     )
 }

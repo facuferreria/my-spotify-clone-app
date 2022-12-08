@@ -19,27 +19,26 @@ let spotify = new SpotifyWebApi();
 function App() {
 
   const [token, setToken] = useState(null);
-  const [{ spotifyData, user, top_artists }, dispatch] = useDataLayer();
+  const [, dispatch] = useDataLayer();
   
-  //donde obtengo la data necesaria de la api
-
-  // esto solo sucede una vez
+  //obtengo el token de acceso
   useEffect(() => { 
-    //funcion para obtener token de acceso
+    
     setToken(getTokenFromResponse());
 
     window.location.hash = '';
   }, [])
 
-  //sucede cada vez que el token de acceso cambie
+  
   useEffect(() => {
 
+    //al tener el token de acceso lo seteo yobtengo la data de la api que necesito
     if(token){
+
       spotify.setAccessToken(token);
-      //A PARTIR DE AQUI OBTENGO LA DATA QUE NECESITO
+      
       const getSpotifyData = async () => {
         
-        // aqui obtengo la data de mi usuario
         const myData = await spotify.getMe()
         dispatch({
           type: "SET_USER",

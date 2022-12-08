@@ -22,7 +22,7 @@ function PlaylistBody({ playlistData, playlistTrackData  }) {
         minutes = `${minutes} min`;
         seconds = Math.floor(seconds % 60);
         seconds = (seconds >= 10) ? `${seconds}s` : `0${seconds}s`;
-        if (hours != "") {
+        if (hours !== "") {
             return `${hours} ${minutes}`;
         }
         return `${minutes} ${seconds}`;
@@ -42,7 +42,7 @@ function PlaylistBody({ playlistData, playlistTrackData  }) {
         <div className = "data-container">
             <div className = "playlist-subcontainer">
                 <div className = "playlist-data">         
-                    <img className="playlist-img" src = { playlistData.images[0].url } />
+                    <img className="playlist-img" src = { playlistData.images[0].url } alt = "playlist"/>
                     <div className = "list">
                         <p className = "list-type">{ playlistData.type.toUpperCase() }</p>
                         <h1 className = "list-name">{ playlistData.name }</h1>
@@ -73,7 +73,8 @@ function PlaylistBody({ playlistData, playlistTrackData  }) {
                 </div>
             </div>
             <div>
-                { playlistTrackData.map((item, id) =>  <PlaylistTrack 
+                { 
+                    playlistTrackData.map((item, id) =>  <PlaylistTrack 
                                                             playPlaylist = {playPlaylist} 
                                                             position={id} 
                                                             key= {item.track?.id} 
