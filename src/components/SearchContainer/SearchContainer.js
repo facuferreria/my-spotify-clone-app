@@ -8,12 +8,13 @@ function SearchContainer() {
 
     const [{ spotifyData }] = useDataLayer();
     const [searchValue, setSearchValue] = useState("");
-    const [results, setResults] = useState({
+    const initialState = {
         album: null,
         playlist: null,
         track: null,
         artist: null
-    })
+    }
+    const [results, setResults] = useState(initialState)
 
     const handleChange = (e) => {
         const value = e.target.value
@@ -29,20 +30,25 @@ function SearchContainer() {
     useEffect(() => {
         
         const searchInSpotify = async () => {
-            const searchResults = await spotifyData.search(searchValue, ["album", "artist", "track", "playlist"], {limit: 4});
-            setResults({
-                album: searchResults.albums,
-                playlist: searchResults.playlists,
-                track: searchResults.tracks,
-                artist: searchResults.artists
-            })
+            try {
+                const searchResults = await spotifyData.search(searchValue, ["album", "artist", "track", "playlist"], {limit: 4});
+                setResults({
+                    album: searchResults.albums,
+                    playlist: searchResults.playlists,
+                    track: searchResults.tracks,
+                    artist: searchResults.artists
+                })
+            } catch (error) {
+                setResults(initialState);
+                console.error("No se encuentra lo que estas buscando...");
+            }
+            
         }
         
         searchInSpotify()
 
     }, [searchValue, spotifyData]);
-
-    console.log(results.album, results.track, results.artist);
+    console.log(results, results.album);
     return (
         <div className="main-body" >
             <div className="search-container" onSubmit={handleSubmit}>
@@ -51,9 +57,10 @@ function SearchContainer() {
                     <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" className="search-icon"/>
                 </div>
                 <div>
-                    <SearchResults inputValue = {searchValue} data = {results.album} category = "album" title = "Albums"/> 
-                    <SearchResults inputValue = {searchValue} data = {results.track} category = "track" title = "Playlists"/> 
-                    <SearchResults inputValue = {searchValue} data = {results.artist} category = "artist" title = "Artistas"/>
+                    <SearchResults data = {results.album} category = "album" title = "Albums"/> 
+                    <SearchResults data = {results.track} category = "track" title = "Tracks"/> 
+                    <SearchResults data = {results.playlist} category = "playlist" title = "Playlist"/>
+                    <SearchResults data = {results.artist} category = "artist" title = "Artistas"/>
                 </div>
                 
             </div>

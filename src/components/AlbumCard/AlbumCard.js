@@ -1,35 +1,44 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React from 'react'
+import React, { useContext } from 'react'
+import { newContext } from '../Context/PlayerContext';
 import './AlbumCard.scss'
 
 function AlbumCard({ index, infoType, item}) {
 
-    let image, name, genreOrArtist;
+    const { playPlaylist, playTrack } = useContext(newContext);
+    let image, name, description, itemUri = item.uri;
     
     if (infoType === "recently_played") {
         name = item?.track.name;
-        genreOrArtist = item?.track.artists.map(artist => artist.name).join(", ");
+        description = item?.track.artists.map(artist => artist.name).join(", ");
         image = item?.track.album.images[1].url;
+        itemUri = item.track.uri;
     }
     else if (infoType === "track") {
         name = item?.name;
-        genreOrArtist = item?.artists.map(artist => artist.name).join(", ");
-        image = item?.album.images[1].url;
+        description = item?.artists.map(artist => artist.name).join(", ");
+        image = item?.album.images[1]?.url;
     } 
     else if (infoType === "artist") {
         name = item?.name;
-        genreOrArtist = item?.genres.join(", ");
-        image = item?.images[1].url;
+        description = item?.genres.join(", ");
+        image = item?.images[1]?.url;
     }
     else if (infoType === "album") {
         name = item?.name;
-        genreOrArtist = item?.artists.map(artist => artist.name).join(", ");
-        image = item?.images[1].url;
+        description = item?.artists.map(artist => artist.name).join(", ");
+        image = item?.images[1]?.url;
+    }
+    else if (infoType === "playlist") {
+        name = item?.name;
+        description = item?.description;
+        image = item?.images[0]?.url;
     }
     else {
         name = "No name";
-        genreOrArtist = "No artist or genre";
+        description = "No artist or genre";
         image = "";
+        itemUri = "";
     }
 
 
@@ -38,9 +47,9 @@ function AlbumCard({ index, infoType, item}) {
             <img src= {image} alt= {infoType} />
             <div className= "track-data">
                 <h3>{name}</h3>
-                <p>{genreOrArtist}</p>
+                <p>{description}</p>
             </div>
-            <div className= "play-button">
+            <div className= "play-button" onClick={ () => playTrack(false, 0, itemUri)}>
                 <FontAwesomeIcon icon="fa-solid fa-play" />
             </div>
         </div>

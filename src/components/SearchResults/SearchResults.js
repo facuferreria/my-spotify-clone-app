@@ -1,10 +1,10 @@
 import React from 'react'
 import MusicSections from '../MusicSections/MusicSections'
 
-function SearchResults({data, category, title, inputValue}) {
+function SearchResults({data, category, title}) {
   return (
     <div>
-        {inputValue !== "" && <MusicSections data = {data} category = {category} title = {title} /> }
+        { (data) && data?.items.length !== 0 && <MusicSections data = {data} category = {category} title = {title} /> }
     </div>
   )
 }

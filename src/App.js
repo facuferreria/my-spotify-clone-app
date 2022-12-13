@@ -19,7 +19,7 @@ let spotify = new SpotifyWebApi();
 function App() {
 
   const [token, setToken] = useState(null);
-  const [, dispatch] = useDataLayer();
+  const [user_library, dispatch] = useDataLayer();
   
   //obtengo el token de acceso
   useEffect(() => { 
@@ -71,6 +71,12 @@ function App() {
           top_artists: getMyTopArtists,
         });
 
+        const getMyLibrary = await spotify.getMySavedTracks({limit: 50})
+        dispatch({
+          type: "SET_LIBRARY",
+          user_library: getMyLibrary,
+        });
+
         await dispatch({
           type: "SET_SPOTIFY",
           spotifyData: spotify,
@@ -85,7 +91,7 @@ function App() {
       getSpotifyData();  
     }
   }, [token, dispatch]);
-
+console.log(user_library);
   //si token es valido ingresa al programa y sino vuelve al componente login
   return (
     

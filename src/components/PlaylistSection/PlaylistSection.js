@@ -7,18 +7,19 @@ import './PlaylistSection.scss'
 function PlaylistSection() {
 
   const { playlistId } = useParams();
-  const [{ playlists_tracks, spotifyData }, dispatch] = useDataLayer();
+  const [{ spotifyData }, dispatch] = useDataLayer();
   const [ loading, setLoading ] = useState(true);
-  const [ playlistData, setPlaylistData ] = useState({});
-
-  
   
   useEffect(() => {
 
     const getPlaylist = async (id) => {
       const myPlaylistTracks = await spotifyData.getPlaylist(id);
-      setPlaylistData(myPlaylistTracks);
-      
+
+      dispatch({
+        type: "SET_PLAYLIST_DATA",
+        playlist_data: myPlaylistTracks
+      })
+
       dispatch({
         type: "SET_PLAYLISTS_TRACKS",
         playlists_tracks: myPlaylistTracks.tracks.items
@@ -36,7 +37,7 @@ function PlaylistSection() {
       {
         loading 
         ? <h3>Cargando...</h3> 
-        : <PlaylistBody playlistTrackData = {playlists_tracks} playlistData = { playlistData } />
+        : <PlaylistBody />
       }
     </div>
   )

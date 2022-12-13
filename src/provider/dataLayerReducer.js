@@ -12,6 +12,7 @@ export const initialState = {
     item: null,
     gettingData: false,
     spotifyData: null,
+    user_library: null,
 }
 
 const reducer = (state, action) => {
@@ -34,7 +35,11 @@ const reducer = (state, action) => {
                 ...state,
                 playlists: action.playlists,
             };
-
+        case "SET_PLAYLIST_DATA":
+            return {
+                ...state,
+                playlist_data: action.playlist_data,
+            };
         case "SET_PLAYLISTS_TRACKS":
             return {
                 ...state,
@@ -88,6 +93,12 @@ const reducer = (state, action) => {
                 ...state,
                 item: action.item,
             }
+
+        case "SET_LIBRARY":
+            return  {
+                ...state,
+                user_library: action.user_library,
+            };
 
         default:
             return state;

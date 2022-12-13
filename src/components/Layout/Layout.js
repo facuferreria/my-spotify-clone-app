@@ -7,6 +7,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import PlaylistSection from '../PlaylistSection/PlaylistSection';
 import Player from '../Player/Player';
 import SearchContainer from '../SearchContainer/SearchContainer';
+import {PlayerContext} from '../Context/PlayerContext'
+import LibraryContainer from '../LibrayContainer/LibraryContainer';
 
 function Layout({ token }) {
 
@@ -19,17 +21,20 @@ function Layout({ token }) {
     gettingData
 
     ?
-    <BrowserRouter>
-      <div className= "player_body">
-        <SideBar />
-        <Routes>
-          <Route index path="/" element = {<Body />} />
-          <Route index path="/search" element = {<SearchContainer />} />
-          <Route index path="/playlist/:playlistId" element = {<PlaylistSection />} />
-        </Routes>
-      </div>
-      <Player token = { token } />
-    </BrowserRouter>
+    <PlayerContext >
+      <BrowserRouter>
+        <div className= "player_body">
+          <SideBar />
+          <Routes>
+            <Route index path="/" element = {<Body />} />
+            <Route index path="/search" element = {<SearchContainer />} />
+            <Route index path="/library" element = {<LibraryContainer />} />
+            <Route index path="/playlist/:playlistId" element = {<PlaylistSection />} />
+          </Routes>
+        </div>
+        <Player token = { token } />
+      </BrowserRouter>
+    </PlayerContext>
     :  
     <h3>Cargando...</h3>
   }

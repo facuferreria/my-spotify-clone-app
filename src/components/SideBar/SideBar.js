@@ -25,7 +25,7 @@ function SideBar(){
                     <FontAwesomeIcon icon={['fas', 'search']} />
                     <p className= "title">Buscar</p>
                 </Link>
-                <Link className= "option-title" to= "/">
+                <Link className= "option-title" to= "/library">
                     <FontAwesomeIcon icon={['fas', 'headphones']} />
                     <p className= "title" >Tu Biblioteca</p>
                 </Link>

@@ -1,63 +1,37 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useDataLayer } from '../../provider/useDataLayer';
-import PlaylistTrack from '../PlaylistTrack/PlaylistTrack';
+import { newContext } from '../Context/PlayerContext';
+import TrackList from '../TrackList/TrackList';
 import './PlaylistBody.scss'
 
-function PlaylistBody({ playlistData, playlistTrackData  }) {
+function PlaylistBody() {
 
-    const [{ playlists_tracks }, dispatch] = useDataLayer();
+    const { playPlaylist, calculateTime } = useContext(newContext);
+    const [{ playlists_tracks, playlist_data }] = useDataLayer();
     const [playlistInLibrary, setPlaylistInLibrary] = useState(false);
-    let millisec = playlistData.tracks.items.reduce((prev, item) => prev + item.track?.duration_ms , 0);
-
-    const calculateTime = (millisec) => {
-        let seconds = (millisec / 1000).toFixed(0);
-        let minutes = Math.floor(seconds / 60);
-        let hours = "";
-        if (minutes > 59) {
-            hours = Math.floor(minutes / 60);
-            minutes =  minutes - (hours * 60) ;
-            hours = `${hours} h`;
-        }
-        minutes = `${minutes} min`;
-        seconds = Math.floor(seconds % 60);
-        seconds = (seconds >= 10) ? `${seconds}s` : `0${seconds}s`;
-        if (hours !== "") {
-            return `${hours} ${minutes}`;
-        }
-        return `${minutes} ${seconds}`;
-    }
+    let millisec = playlist_data.tracks.items.reduce((prev, item) => prev + item.track?.duration_ms , 0);
     
-    const playPlaylist = () => {
-        let uriTracksArray = [];
-        playlists_tracks.forEach(item => uriTracksArray.push(item.track.uri));
-
-        dispatch({
-            type: "SET_PLAYING_LIST",
-            playing_list: uriTracksArray,
-        });
-    }
-
     return (
         <div className = "data-container">
             <div className = "playlist-subcontainer">
                 <div className = "playlist-data">         
-                    <img className="playlist-img" src = { playlistData.images[0].url } alt = "playlist"/>
+                    <img className="playlist-img" src = { playlist_data?.images[0]?.url } alt = "playlist"/>
                     <div className = "list">
-                        <p className = "list-type">{ playlistData.type.toUpperCase() }</p>
-                        <h1 className = "list-name">{ playlistData.name }</h1>
+                        <p className = "list-type">{ playlist_data?.type.toUpperCase() }</p>
+                        <h1 className = "list-name">{ playlist_data?.name }</h1>
                         <div className = "list-info">
-                            <p className = "list-owner">{ playlistData.owner.display_name }</p>
+                            <p className = "list-owner">{ playlist_data?.owner?.display_name }</p>
                             <p className = "points">.</p>
-                            <p>{ playlistData.followers.total} me gusta</p>
+                            <p>{ playlist_data?.followers.total} me gusta</p>
                             <p className = "points">.</p>
-                            <p>{ playlistData.tracks.total} canciones</p>
+                            <p>{ playlist_data?.tracks.total} canciones</p>
                             <p className = "list-time">{ calculateTime(millisec) }</p>
                         </div>
                     </div>          
                 </div>
                 <div className = "buttons-container">
-                    <button className = "playlist-play" onClick = {() => playPlaylist()}>
+                    <button className = "playlist-play" onClick = {() => playPlaylist(playlists_tracks)}>
                         <FontAwesomeIcon icon="fa-solid fa-play" />
                     </button>
                     <div className = "playlist-heart" onClick = {() => setPlaylistInLibrary(!playlistInLibrary)}>
@@ -73,15 +47,7 @@ function PlaylistBody({ playlistData, playlistTrackData  }) {
                 </div>
             </div>
             <div>
-                { 
-                    playlistTrackData.map((item, id) =>  <PlaylistTrack 
-                                                            playPlaylist = {playPlaylist} 
-                                                            position={id} 
-                                                            key= {item.track?.id} 
-                                                            track = {item.track} 
-                                                            calculateTime = {calculateTime}
-                                                        />) 
-                }
+                <TrackList data = {playlists_tracks} time = {calculateTime} isFromPlaylist = {true} /> 
             </div>
         </div>
     )
