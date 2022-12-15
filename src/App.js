@@ -91,7 +91,7 @@ function App() {
       getSpotifyData();  
     }
   }, [token, dispatch]);
-console.log(user_library);
+
   //si token es valido ingresa al programa y sino vuelve al componente login
   return (
     

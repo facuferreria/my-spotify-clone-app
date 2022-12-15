@@ -5,7 +5,7 @@ import './Player.scss';
 
 function Player({ token }) {
   
-  const [{ item, playing_list, track_position }, dispatch] = useDataLayer();
+  const [{ item, playing_list, track_position }] = useDataLayer();
   let playingTracks = playing_list === null ? item : playing_list;
   const [play, setPlay] = useState(false);
 

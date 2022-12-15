@@ -1,0 +1,40 @@
+@import '../../variables.scss';
+
+.search-body{
+    width: 100%;
+    height: 100%;
+}
+
+.input-container{
+    position: relative;
+    margin: 15px 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+  
+input[type=text]{
+    position: relative;
+    padding: 15px 40px 15px 20px;
+    width: 20px;
+    color: #525252;
+    font-size: 14px;
+    font-weight: 100;
+    letter-spacing: 2px;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(to right, #FFFFFF 0%,#464747 #F9F9F9 100%);
+    transition: width 0.4s ease;
+    outline: none;
+    
+    &:focus{ width: 400px; }
+}
+
+.search-icon{
+    margin: auto 0;
+    position: relative;
+    left: -37px;
+    color: $secondary-color;
+    cursor: pointer;
+}

@@ -5,7 +5,6 @@ import { newContext } from '../Context/PlayerContext';
 import TrackList from '../TrackList/TrackList';
 
 function LibraryContainer() {
-
     const { playPlaylist, calculateTime } = useContext(newContext);
     const [{ user_library, user }] = useDataLayer();
 
@@ -37,8 +36,7 @@ function LibraryContainer() {
                     <TrackList data = {user_library.items} time = {calculateTime} isFromPlaylist = {true} /> 
                 </div>
             </div>
-        </div>
-        
+        </div>    
     )
 }
 
