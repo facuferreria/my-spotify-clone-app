@@ -1,70 +1,50 @@
-# Getting Started with Create React App
+# My-Spotify-Clone
+## Ferretify
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+La pagina es un clon del reproductor de musica conocida como [Spotify](https://www.spotify.com/) a la que me gusta llamarle Ferretify. 
+En este reproductor usted, accediendo a su cuenta de spotify, escuchar y ver de todo acerca de sus canciones, sus top artistas,
+sus playlists y mucho mas.
+En este proyecto trabajamos con la [Api de spotify](https://developer.spotify.com/) mediante 
+la utilizacion de un client wrapper, o mejor dicho, libreria de la api de [jmperez](https://github.com/jmperez/spotify-web-api-js).
 
-In the project directory, you can run:
 
-### `npm start`
+## Install and deploy
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Para poder ver el sitio corriendo y poder probar de Ferretify debe abrir una terminal en su editor de codigo, abrir una terminal, 
+clonar el proyecto en su directorio e instalar las devDependencies de la siguiente manera:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```sh
+git clone https://github.com/facuferreria/my-spotify-clone-app
+npm install
+```
+Despues de instalar las dependencias, debes ir a la documentacion de spotify y obtener tu "CLIENT ID". 
+Si no sabes como hacerlo por favor visita este [link](https://developer.spotify.com/documentation/general/guides/authorization/app-settings/).
 
-### `npm test`
+Luego debe ir al archivo spotify.js donde va a reemplazar el string en la variable "clientId" por su id de cliente.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```sh
+const clientId = 'YOUR CLIENT ID';
+```
 
-### `npm run build`
+Finalmente debera volver a su terminal y ejecutar el servidor:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```sh
+npm start
+```
+ACLARACION: Cabe aclarar que por motivos de autenticacion de spotify, el token de acceso que se le otorga a cada usuario una vez accedido a utilizar su cuenta de spotify, solo consta de una hora de duracion y luego de esa hora no esta permitido acceder a la informacion de la api de spotify. 
+Para volver a utilizar este reproductor debera refrescar la pagina y volver a acceder a su cuenta para obtener un nuevo token de acceso. En un futuro actualizaremos el proyecto para que pueda navegar por Ferretify sin necesidad de refrescar la pagina.
+ 
+ 
+## Dev dependencies
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Las dependencias y librerias utilizadas en este proyecto son las siguientes:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+| Dependecias | Version | Uso |
+| ------ | ------ | ------ |
+| reactjs | 18.1.0 | Front-End del proyecto |
+| react-router-dom | 6.4.3 | Enrutado del proyecto |
+| react-spotify-web-playback | 0.10.0 | Reproductor de musica de spotify |
+| fontawesome | 6.1.1 | Iconos del proyecto |
+| spotify-web-api-js | 1.5.2 | Wrapper de la api de spotify |
+| sass | 1.56.1 | Estilos del proyecto |
