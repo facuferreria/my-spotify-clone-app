@@ -13,10 +13,10 @@ function SideBar(){
     return (
         <div className= "side-bar">
             <div className= "side-bar-options">
-                <div className= "spotify-logo">
+                <Link className= "spotify-logo" to= "/">
                     <FontAwesomeIcon icon={['fab', 'spotify']} size= "3x"/>
                     <h1 className= "spotify-title">Ferretify</h1>
-                </div>
+                </Link>
                 <Link className= "option-title" to= "/">
                     <FontAwesomeIcon icon={['fas', 'home']} />
                     <p className= "title">Inicio</p>

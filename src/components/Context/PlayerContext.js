@@ -29,7 +29,7 @@ export function PlayerContext({children}) {
   const playPlaylist = (list) => {
     let uriTracksArray = [];
     list.forEach(item => uriTracksArray.push(item.track.uri));
-
+    console.log(uriTracksArray);
     dispatch({
       type: "SET_PLAYING_LIST",
       playing_list: uriTracksArray,

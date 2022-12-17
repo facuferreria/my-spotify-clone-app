@@ -4,17 +4,16 @@ import { useDataLayer } from '../../provider/useDataLayer';
 import { newContext } from '../Context/PlayerContext';
 import './Track.scss';
 
-function Track({ track, position, calculateTime, isFromPlaylist }) {
+function Track({ track, position, calculateTime, isFromPlaylist, list }) {
 
   const { playTrack } = useContext(newContext);
   const [trackInLibrary, setTrackInLibrary] = useState(false);
-  const [{ playlists_tracks }] = useDataLayer();
   const millisec = track?.duration_ms;
 
   return (
     <div  className = "track-container">     
       <p className = "track-position">{ position + 1 }</p>
-      <div className = "track-information" onClick = {() => playTrack(isFromPlaylist, position, track, playlists_tracks)}>
+      <div className = "track-information" onClick = {() => playTrack(isFromPlaylist, position, track, list)}>
         <img className = "track-img" src = { track?.album?.images[2]?.url} alt = "track"/>
         <div>
           <h4>{ track?.name }</h4>

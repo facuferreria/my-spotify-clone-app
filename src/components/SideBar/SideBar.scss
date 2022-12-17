@@ -47,7 +47,7 @@
 .spotify-title{
     @extend .option-title;
     font-size: 1.5em;
-    cursor: initial;
+    cursor: pointer;
     color: $text-color;
     margin-left: 5px;
 }

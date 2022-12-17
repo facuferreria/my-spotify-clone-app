@@ -45,7 +45,7 @@ function App() {
           user: myData,
         });
           
-        const myPlaylist = await spotify.getUserPlaylists()
+        const myPlaylist = await spotify.getUserPlaylists({limit: 50})
         dispatch({
           type: "SET_PLAYLISTS",
           playlists: myPlaylist,

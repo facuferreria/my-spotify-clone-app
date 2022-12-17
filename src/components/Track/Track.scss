@@ -1,7 +1,7 @@
 @import '../../variables.scss';
 
 .track-container {
-    padding: 5px;
+    padding: 5px 12px;
     display: grid;
 	grid-template-columns: 20px 6fr 40px 2fr;
     column-gap: 20px;

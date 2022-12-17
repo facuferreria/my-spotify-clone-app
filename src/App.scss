@@ -10,31 +10,24 @@
   
 }
 
-::-webkit-scrollbar{
+*::-webkit-scrollbar{
   width: 12px;
 }
 
-::-webkit-scrollbar-track{
-  background: $primary-color;
+*::-webkit-scrollbar-track{
   border: none;
 }
 
-::-webkit-scrollbar-track-piece{
-  background-color: transparent;
-}
-
-::-webkit-scrollbar-thumb{
+*::-webkit-scrollbar-thumb{
   background-color: rgba(255, 255, 255, 0.13);
 
   &:hover{
-    background-color: lighten($color: rgba(255, 255, 255, 0.13), $amount: 1);
+    background-color: lighten($color: rgba(255, 255, 255, 0.13), $amount: 6);
 
     &:active{
-      background-color: lighten($color: rgba(255, 255, 255, 0.13), $amount: 3);
+      background-color: lighten($color: rgba(255, 255, 255, 0.13), $amount: 8);
     }
   }
-
-  
 }
 
 
