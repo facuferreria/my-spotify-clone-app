@@ -3,7 +3,7 @@
 
 
 La pagina es un clon del reproductor de musica conocida como [Spotify](https://www.spotify.com/) a la que me gusta llamarle Ferretify. 
-En este reproductor usted, accediendo a su cuenta de spotify, escuchar y ver de todo acerca de sus canciones, sus top artistas,
+En este reproductor usted, accediendo a su cuenta de spotify, podra escuchar y ver de todo acerca de sus canciones, sus top artistas,
 sus playlists y mucho mas.
 En este proyecto trabajamos con la [Api de spotify](https://developer.spotify.com/) mediante 
 la utilizacion de un client wrapper, o mejor dicho, libreria de la api de [jmperez](https://github.com/jmperez/spotify-web-api-js).
